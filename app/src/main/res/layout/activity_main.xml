@@ -1,88 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.android.scorekeeper.MainActivity">
+    tools:context="com.example.android.scorekeeper.MainActivity"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/score_keeper"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+            style="@style/ScoreKeeper_Layout">
 
             <LinearLayout
                 android:id="@+id/score_keeper_team_a"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:orientation="vertical">
+                style="@style/ScoreKeeper">
+
                 <TextView
                     android:id="@+id/label_team_a"
-                    android:text="Team A"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:text="@string/Team_A"
+                    style="@style/TeamLabel"/>
                 <TextView
                     android:id="@+id/score_team_a"
-                    android:text="0"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:textSize="80sp"
-                    android:textColor="#000000"/>
+                    android:text="@string/zero"
+                    style="@style/Score"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+                style="@style/Minus">
                 <TextView
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="40sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="-"/>
+                    android:text="-"
+                    style="@style/Minus_TextView"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/score_keeper_team_b"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:orientation="vertical">
+                style="@style/ScoreKeeper">
                 <TextView
                     android:id="@+id/label_team_b"
-                    android:text="Team B"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:text="@string/Team_B"
+                    style="@style/TeamLabel"/>
                 <TextView
                     android:id="@+id/score_team_b"
-                    android:text="0"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:textSize="80sp"
-                    android:textColor="#000000"/>
+                    android:text="@string/zero"
+                    style="@style/Score"/>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#0091EA"
-            android:layout_marginBottom="10dp">
+            style="@style/Line">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -90,156 +59,88 @@
 
     <LinearLayout
             android:id="@+id/scoring_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            style="@style/Scoring_Buttons_Layout_Parent">
 
         <LinearLayout
             android:id="@+id/touchdown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/touchdown">
+            style="@style/Button_Layout">
 
             <Button
                 android:id="@+id/touchdown_team_a"
-                android:text="Touchdown\n(+6)"
+                android:text="@string/touchdown"
                 android:onClick="updateTeamScore"
-                android:background="#0091EA"
-                android:textColor="#fff"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/Single_Button" />
 
             <Button
                 android:id="@+id/touchdown_team_b"
-                android:text="Touchdown\n(+6)"
+                android:text="@string/touchdown"
                 android:onClick="updateTeamScore"
-                android:background="#0091EA"
-                android:textColor="#fff"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/Single_Button" />
         </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/field_goal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/touchdown"
-                android:layout_marginTop="5dp">
+                style="@style/Button_Layout">
 
                 <Button
                     android:id="@+id/field_goal_team_a"
-                    android:text="Field Goal\n(+3)"
+                    android:text="@string/Field_Goal"
                     android:onClick="updateTeamScore"
-                    android:background="#0091EA"
-                    android:textColor="#fff"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    style="@style/Single_Button" />
 
                 <Button
                     android:id="@+id/field_goal_team_b"
-                    android:text="Field Goal\n(+3)"
+                    android:text="@string/Field_Goal"
                     android:onClick="updateTeamScore"
-                    android:background="#0091EA"
-                    android:textColor="#fff"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    style="@style/Single_Button" />
             </LinearLayout>
 
         <LinearLayout
             android:id="@+id/extra_point"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/touchdown"
-            android:layout_marginTop="5dp">
+            style="@style/Button_Layout">
 
             <Button
                 android:id="@+id/extra_point_team_a"
-                android:text="Extra Point\n(+1)"
+                android:text="@string/Extra_Point"
                 android:onClick="updateTeamScore"
-                android:background="#0091EA"
-                android:textColor="#fff"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/Single_Button" />
 
             <Button
                 android:id="@+id/extra_point_team_b"
-                android:text="Extra Point\n(+1)"
+                android:text="@string/Extra_Point"
                 android:onClick="updateTeamScore"
-                android:background="#0091EA"
-                android:textColor="#fff"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/Single_Button" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/safety"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/touchdown"
-            android:layout_marginTop="5dp">
+            style="@style/Button_Layout">
 
             <Button
                 android:id="@+id/safety_team_a"
-                android:text="Safety\n(+2)"
+                android:text="@string/Safety"
                 android:onClick="updateTeamScore"
-                android:background="#0091EA"
-                android:textColor="#fff"
-                android:layout_alignParentLeft="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/Single_Button" />
 
             <Button
                 android:id="@+id/safety_team_b"
-                android:text="Safety\n(+2)"
+                android:text="@string/Safety"
                 android:onClick="updateTeamScore"
-                android:background="#0091EA"
-                android:textColor="#fff"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/Single_Button" />
         </LinearLayout>
-
-
 
     </LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#0091EA"
-            android:layout_marginBottom="10dp">
+            style="@style/Line">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/Line_Line" />
         </LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            style="@style/Reset_Layout">
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Reset"
-                android:background="#B71C1C"
-                android:textColor="#FFFFFF"
-                android:onClick="resetScores"/>
+                android:id="@+id/reset_button"
+                android:onClick="resetScores"
+                style="@style/Reset" />
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
